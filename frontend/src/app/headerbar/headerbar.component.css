@@ -1,0 +1,51 @@
+.headerbar {
+    display: flex;
+    background: #008080;
+    margin: 0px;
+    width: 100%;
+    border: 0px;
+  }
+
+  .nav-link {
+    font-size: 16px; 
+    color: #ffffff; 
+    transition: color 0.3s; 
+    text-decoration: none !important;
+}
+
+.nav-link:hover {
+    background-color: transparent !important;
+    text-decoration: none !important; 
+}
+
+.navbar-bar .dropdown-toggle {
+    background-color: transparent;
+}
+
+.nav-link:focus,
+.nav-link:active,
+.nav-link:open {
+    background-color: transparent !important;
+  outline: none; 
+  color: inherit; 
+  background-color: inherit;
+}
+
+.dropdown-color {
+    background-color: #008080;
+}
+
+.nav-right {
+    margin-left: auto;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.nav {
+    width: 100%;
+    flex-wrap: nowrap !important;
+}
+
+.pointer {
+    cursor: pointer;
+}

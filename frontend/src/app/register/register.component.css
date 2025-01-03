@@ -1,0 +1,39 @@
+.button {
+    color: #ffffff;
+    width: 100%;
+    background-color:#008080;
+}
+
+.color {
+    border: 3px solid #008080;
+    border-radius: 8px;
+    color:#0A2E36 ;
+}
+
+.body {
+    height: 100%;
+    background-color: #0A2E36 ;
+}
+
+.form-control {
+    width: 250px;
+}
+
+.error-container{
+    position: relative;
+  }
+ 
+  .error {
+    position: absolute;
+     top: 120%; /* Position below the input */
+     left: 0;
+     width: 100%;
+    color:red;
+    font-size: 10px;
+    padding-left: 3px;
+  }
+
+  .button:disabled {
+    width: 100%;
+   border: 0px;
+}

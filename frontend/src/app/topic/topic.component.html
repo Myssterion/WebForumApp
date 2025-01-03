@@ -1,0 +1,27 @@
+<app-headerbar></app-headerbar>
+<div class="d-flex body align-items-center flex-column">
+
+    <div class="d-flex flex-column w-full comment-container">
+        <div *ngFor="let comment of comments" class="comment mt-3">
+            <div class="comment-content">
+                <p>{{comment.content}}</p>
+            </div>
+            <div class="comment-info">
+                <p class="comment-date">{{comment.posted | date: 'dd/MM/yyyy HH:mm:ss'}}</p>
+                <div class="comment-user">
+                    {{comment.username}}
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="canPost" class="add-comment mt-5">
+            <div class="form-floating">
+                <textarea class="form-control textarea" id="new-comment" [(ngModel)]="newComment" (input)="checkContent()"></textarea>
+                <label *ngIf="!hasContent" for="new-comment">Write your comment...</label>
+            </div>
+            <div class="d-flex align-items-center justify-content-end mt-2 pr-2">
+            <button class="btn button" (click)="onPostClick()">Post</button>
+            </div>
+        </div>
+    </div>
+</div>

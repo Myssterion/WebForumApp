@@ -1,0 +1,102 @@
+.body {
+    min-height: calc(100% - 44px);
+    height: auto;
+    background-color: #0A2E36 ;
+}
+
+.fixed-table {
+    margin: 0px !important;
+    padding: 5px;
+    transition: 0.5s;
+    table-layout: fixed;
+    width: 100%; /* Ensure the table takes the full width */
+}
+
+.fixed-table th, .fixed-table td {
+   /* width: auto; /* Ensure even distribution of width */
+  /*  text-align: left; /* Optional: align text to the left */
+    background-color: #008080;
+    color: #ffffff;
+}
+
+.first-row{
+    width: 70%;
+    min-width: 70%;
+    max-width: 70%;
+}
+
+
+.action-row {
+    width: 10%;
+    min-width: 10%;
+    max-width: 10%;
+}
+
+.user-container {
+    height: 100%;
+    flex-grow: 1;
+}
+
+.user {
+    display: flex;
+    width: 100%;
+    background-color: #008080;
+    color: #ffffff;
+    padding: 8px;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box
+}
+
+.w-full {
+    width: 75%;
+}
+
+.button {
+    color: #ffffff;
+    background-color:#008080;
+    outline: none !important;
+    min-width: 20px;
+    font-size: 15px;
+    margin-left: 10px;
+}
+
+.pagination {
+    display: flex;
+   justify-content: center;
+    margin-bottom: 0px;
+}
+
+:host ::ng-deep ngb-pagination .page-item .page-link {
+    color: #ffffff;
+    background-color:#008080;
+    font-size: 14px;
+}
+
+::ng-deep .modal-content {
+    font-size: 14px;
+    color: #ffffff;
+    background-color:#008080;
+}
+
+::ng-deep .form-select {
+    font-size: 12px;
+    color: #ffffff;
+    background-color:#008080;
+}
+
+@media (max-width: 1000px) {
+    .user-action {
+        width: 100%;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .user-content {
+        width: 100%;
+    }
+
+    .user {
+        flex-direction: column;
+    }
+}

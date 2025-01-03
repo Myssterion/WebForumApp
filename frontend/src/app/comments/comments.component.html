@@ -1,0 +1,48 @@
+<app-headerbar></app-headerbar>
+<div class="d-flex body align-items-center flex-column">
+
+    <div class="d-flex flex-column w-full comment-container">
+        <div *ngFor="let comment of comments" class="comment mt-3">
+            <div class="comment-content">
+                <p>{{comment?.content}}</p>
+            </div>
+            <div class="comment-action">
+                <a *ngIf="canApprove" class='btn btn-info btn-xs action button' (click)="approveComment(comment.commentId)"><span class="glyphicon glyphicon-ok"></span></a>
+                <a *ngIf="canModify" class='btn btn-info btn-xs action button' (click)="showModifyComment(comment)"><span class="glyphicon glyphicon-pencil"></span></a>
+                <a *ngIf="canBan" class='btn btn-info btn-xs action button' (click)="banComment(comment.commentId)"><span span class="glyphicon glyphicon-ban-circle"></span></a>
+            </div>
+        </div>
+    </div>
+       
+
+    <div class="pagination">
+        <ngb-pagination
+        [collectionSize]="comments.length"
+        [pageSize]="pageSize"
+        [(page)]="currentPage"
+        [boundaryLinks]="true"
+        ></ngb-pagination>
+    </div>
+</div>
+
+<div class="modal" id="modifyComment" #modifyComment tabindex="-1" >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modify comment</h5>
+          <button type="button" class="btn-close" aria-label="Close" (click)="closeModifyComment()"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div *ngIf="selectedComment" class="mt-3 d-flex flex-column">
+                <label>Comment</label>
+                <textarea class="form-control textarea" name="comment-content" [(ngModel)]="selectedComment.content"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-info button" (click)="saveComment()">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>

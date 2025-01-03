@@ -1,0 +1,80 @@
+.body {
+    min-height: calc(100% - 44px);
+    height: auto;
+    background-color: #0A2E36 ;
+}
+
+.fixed-table {
+    margin: 0px !important;
+    padding: 5px;
+    transition: 0.5s;
+    table-layout: fixed;
+    width: 100%; /* Ensure the table takes the full width */
+}
+
+.fixed-table th, .fixed-table td {
+    width: auto; /* Ensure even distribution of width */
+    text-align: left; /* Optional: align text to the left */
+    background-color: #008080;
+    color: #ffffff;
+}
+
+.action {
+    text-align: center !important;
+}
+
+.user-container {
+    height: 100%;
+    flex-grow: 1;
+}
+
+.user {
+    display: flex;
+    width: 100%;
+    background-color: #008080;
+    color: #ffffff;
+    padding: 8px;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box
+}
+
+.w-full {
+    width: 75%;
+}
+
+.button {
+    color: #ffffff;
+    background-color:#008080;
+    min-width: 20px;
+    font-size: 15px;
+    margin-left: 10px;
+}
+
+.pagination {
+    display: flex;
+   justify-content: center;
+    margin-bottom: 0px;
+}
+
+:host ::ng-deep ngb-pagination .page-item .page-link {
+    color: #ffffff;
+    background-color:#008080;
+    font-size: 14px;
+}
+
+@media (max-width: 1000px) {
+    .user-action {
+        width: 100%;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .user-content {
+        width: 100%;
+    }
+
+    .user {
+        flex-direction: column;
+    }
+}

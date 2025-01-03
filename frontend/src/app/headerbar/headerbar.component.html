@@ -1,0 +1,35 @@
+<div class="headerbar">
+        <ul class="nav navbar-bar navbar-left">
+            <li>
+                <a class="nav-link" routerLink="/home">Home</a>
+            </li>
+
+            <li *ngIf="isLoggedIn" class="nav-item dropdown">
+                <a class="dropdown-toggle nav-link" href="#" id="topicDropdown" role="button" data-toggle="dropdown" aria-expanded="false">Topic</a>
+                <div class="dropdown-menu dropdown-color" aria-labelledby="topicDropdown">
+                    <a *ngFor="let topic of topics" class="nav-link" [routerLink]="['/topic', topic.topicName]" >{{topic.topicName}}</a>
+                </div>
+            </li>
+
+            <li *ngIf="isLoggedIn && (isModerator || isAdmin)">
+                <a class="dropdown-toggle nav-link" id="commentDropdown" role="button" data-toggle="dropdown" aria-expanded="false">Manage Comments</a>
+                <div class="dropdown-menu dropdown-color" aria-labelledby="commentDropdown">
+                    <a *ngFor="let topic of topics" class="nav-link" [routerLink]="['/comment', topic.topicName]" >{{topic.topicName}}</a>
+                </div>
+            </li>
+
+           <li *ngIf="isLoggedIn && isAdmin" class="nav-item dropdown">
+                <a class="dropdown-toggle nav-link" href="#" id="usersDropdown" role="button" data-toggle="dropdown" aria-expanded="false">Manage Users</a>
+                <div class="dropdown-menu dropdown-color" aria-labelledby="usersDropdown">
+                    <a class="nav-link" routerLink="/access-control">Access Control</a>
+                    <a class="nav-link" routerLink="/permission-control">Permission Control</a>
+                </div>
+           </li>
+
+           <li class="nav-right">
+            <a *ngIf="isLoggedIn" class="nav-link pointer" (click)="logout()">Logout</a>
+            <a *ngIf="!isLoggedIn" class="nav-link" routerLink="/login">Login</a>
+            <a *ngIf="!isLoggedIn" class="nav-link" href="#" routerLink="/register">Register</a>
+        </li>
+        </ul>
+</div>

@@ -1,0 +1,4 @@
+.body {
+    height: calc(100% - 44px);
+    background-color: #0A2E36 ;
+}

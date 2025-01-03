@@ -1,0 +1,43 @@
+<app-headerbar></app-headerbar>
+<div class="d-flex body align-items-center flex-column">
+
+    <div class="d-flex flex-column w-full user-container">
+        <div class="user mt-3">
+        <table class="table fixed-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Email</th>
+                    <th>Username</th>
+                    <th class="action">Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let user of users">
+                    <td>{{user.name}}</td>
+                    <td>{{user.surname}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.username}}</td>
+                    <td class="action">
+                        <a class='btn btn-info btn-xs action button' (click)="approveUser(user.userId)"><span class="glyphicon glyphicon-ok"></span></a>
+                        <a class='btn btn-info btn-xs action button' (click)="banUser(user.userId)"><span class="glyphicon glyphicon-remove"></span></a>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+        </div>
+    </div>
+       
+
+    <div class="pagination">
+        <ngb-pagination class="custom-pagination"
+        [collectionSize]="users.length"
+        [pageSize]="pageSize"
+        [(page)]="currentPage"
+        [boundaryLinks]="true"
+        ></ngb-pagination>
+    </div>
+</div>

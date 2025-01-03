@@ -1,0 +1,113 @@
+.body {
+    min-height: calc(100% - 44px);
+    height: auto;
+    background-color: #0A2E36 ;
+}
+
+.comment-container {
+    height: 100%;
+    flex-grow: 1;
+    margin-bottom: 1rem;
+}
+
+.comment {
+    display: flex;
+    width: 100%;
+    background-color: #008080;
+    color: #ffffff;
+    padding: 8px;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box
+}
+
+.comment-action {
+    width: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 10px 0px;
+    box-sizing: border-box
+}
+
+.comment-date {
+    text-align: right;
+    margin-bottom: 0px;
+}
+
+.comment-user {
+    font-size: 12px;
+    text-align: right;
+}
+
+
+.comment-content {
+    display: flex;
+    align-items: center;
+    width: 85%;
+    padding: 10px 0px;
+    box-sizing: border-box;
+}
+
+.comment-content > p {
+    margin-bottom: 0px;
+}
+
+.w-full {
+    width: 75%;
+}
+
+.button {
+    color: #ffffff;
+    background-color:#008080;
+    min-width: 20px;
+    font-size: 15px;
+}
+
+.pagination {
+    display: flex;
+   justify-content: center;
+    margin-bottom: 0px;
+}
+
+.textarea {
+    resize: none;
+    min-height: 100px;
+    padding: 8px;
+    font-size: 14px;
+}
+
+:host ::ng-deep ngb-pagination .page-item .page-link {
+    color: #ffffff;
+    background-color:#008080;
+    border-color: #ffffff;
+    font-size: 14px;
+}
+
+::ng-deep .modal-content {
+    font-size: 14px;
+    color: #ffffff;
+    background-color:#008080;
+}
+
+::ng-deep .form-select {
+    font-size: 12px;
+    color: #ffffff;
+    background-color:#008080;
+}
+
+@media (max-width: 1000px) {
+    .comment-action {
+        width: 100%;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .comment-content {
+        width: 100%;
+    }
+
+    .comment {
+        flex-direction: column;
+    }
+}

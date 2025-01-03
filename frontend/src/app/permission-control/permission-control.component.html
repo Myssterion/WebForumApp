@@ -1,0 +1,117 @@
+<app-headerbar></app-headerbar>
+<div class="d-flex body align-items-center flex-column">
+
+    <div class="d-flex flex-column w-full user-container">
+        <div class="user mt-3">
+        <table class="table fixed-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Email</th>
+                    <th>Username</th>
+                    <th class="action">Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let user of users">
+                    <td>{{user.name}}</td>
+                    <td>{{user.surname}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.username}}</td>
+                    <td class="action">
+                      <a class='btn btn-info btn-xs action button'  (click)="showModifyUserRole(user)"><span class="glyphicon glyphicon-user"></span></a>
+                        <a class='btn btn-info btn-xs action button'  (click)="showModifyUserPermissions(user)"><span class="glyphicon glyphicon-pencil"></span></a>
+                    </td>
+                </tr> 
+            </tbody>
+
+        </table>
+        </div>
+    </div>
+       
+
+    <div class="pagination">
+        <ngb-pagination class="custom-pagination"
+        [collectionSize]="users.length"
+        [pageSize]="pageSize"
+        [(page)]="currentPage"
+        [boundaryLinks]="true"
+        ></ngb-pagination>
+    </div>
+</div>
+
+<div class="modal" id="showModifyUserRole" #modifyUserRole tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modify user role</h5>
+          <button type="button" class="btn-close" aria-label="Close" (click)="closeModifyUserRole()"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div *ngIf="this.selectedUser" class="mt-3">
+                <label>Group</label>
+                <select class="form-select"  name="role" id="role" [(ngModel)]="selectedUser.role" [compareWith]="compareById">
+                    <option [value]="null" selected disabled>Select Category</option>
+                    <option *ngFor="let role of roles" [ngValue]="role">{{role.roleName}}</option>
+                </select>
+            </div> 
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-info button" (click)="saveUserRole()">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="modal" id="showModifyUserPermissions" #modifyUserPermissions tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modify user permissions</h5>
+          <button type="button" class="btn-close" aria-label="Close" (click)="closeModifyUserPermissions()"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mt-3">
+                <table class="table fixed-table">
+                <thead>
+                    <tr>
+                        <th class="first-row">Topic</th>
+                        <th title="Permission to post comments" class="action-row"><span class="glyphicon glyphicon-comment"></span></th>
+                        <ng-container *ngIf="isModerator">
+                        <th title="Permission to approve comments" class="action-row"><span class="glyphicon glyphicon-ok"></span></th>
+                        <th title="Permission to modify comments" class="action-row"><span class="glyphicon glyphicon-pencil"></span></th>
+                        <th title="Permission to ban comments" class="action-row"><span span class="glyphicon glyphicon-ban-circle"></span></th>
+                      </ng-container>
+                    </tr>
+                </thead>
+    
+                <tbody>
+                    <tr *ngFor="let permission of permissions">
+                        <td >{{permission.topicName}}</td>
+                        <td ><input type="checkbox" [checked]="permission.permissions.includes('POST')" 
+                          (change)="onPermissionChange(permission.topicName, 'POST', onCheckboxChange($event))"/></td>
+                          <ng-container *ngIf="isModerator">
+                        <td ><input type="checkbox" [checked]="permission.permissions.includes('APPROVE')"
+                          (change)="onPermissionChange(permission.topicName, 'APPROVE', onCheckboxChange($event))"/></td>
+                        <td ><input type="checkbox" [checked]="permission.permissions.includes('MODIFY')"
+                          (change)="onPermissionChange(permission.topicName, 'MODIFY', onCheckboxChange($event))"/></td>
+                        <td ><input type="checkbox" [checked]="permission.permissions.includes('BAN')"
+                          (change)="onPermissionChange(permission.topicName, 'BAN', onCheckboxChange($event))"/></td>
+                        </ng-container>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-info button" (click)="saveUserPermissions()">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
